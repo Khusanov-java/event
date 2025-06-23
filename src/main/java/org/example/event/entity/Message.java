@@ -5,30 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "users")
-public class User {
-
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String email;
-    private String password;
-    private String profileImage;
+    @ManyToOne
+    private User sender;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @ManyToOne
+    private User receiver;
 
-    private String bio;
+    private String content;
 
-    public enum Role {
-        USER, ORGANIZER
-    }
+    private LocalDateTime sentAt;
 }
