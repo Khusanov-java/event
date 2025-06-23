@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 public class RegisterDTO {
     private String email;
     private String password;
-    @Schema(description = "this field for confirming password")
     private String confirmPassword;
     private String fullName;
 }
