@@ -24,7 +24,7 @@ public class User {
     private String profileImage;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.USER;
 
     private String bio;
 

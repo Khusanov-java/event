@@ -5,6 +5,7 @@ import org.example.event.dtos.LoginDTO;
 import org.example.event.dtos.RegisterDTO;
 import org.example.event.entity.User;
 import org.example.event.service.interfaces.AuthService;
+import org.example.event.utils.Util;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping(Util.AUTH_PATH)
 @RequiredArgsConstructor
 public class AuthController {
+
     private final AuthService authService;
 
     @PostMapping
