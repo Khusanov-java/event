@@ -64,6 +64,8 @@ public class UserController {
         return ResponseEntity.ok(new ArrayList<>(user.getFollowing()));
     }
 
+
+
     @Transactional
     @PostMapping("/{id}/follow")
     public ResponseEntity<String> followUser(@PathVariable Long id, @RequestParam Long followerId) {
