@@ -3,12 +3,11 @@ package org.example.event.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.event.entity.User;
 import org.example.event.repo.UserRepository;
+import org.example.event.service.interfaces.UserService;
 import org.example.event.utils.Util;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,75 +16,31 @@ import java.util.List;
 public class UserController {
 
     private final UserRepository userRepository;
+    private final UserService userService;
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserProfile(@PathVariable Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(userService.getUser(id));
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        if (updatedUser.getName() != null) {
-            user.setName(updatedUser.getName());
-        }
-
-        if (updatedUser.getEmail() != null) {
-            user.setEmail(updatedUser.getEmail());
-        }
-
-        if (updatedUser.getProfileImage() != null) {
-            user.setProfileImage(updatedUser.getProfileImage());
-        }
-
-        if (updatedUser.getBio() != null) {
-            user.setBio(updatedUser.getBio());
-        }
-
-        return ResponseEntity.ok(userRepository.save(user));
+        return ResponseEntity.ok(userService.updateUser(id , updatedUser));
     }
 
     @GetMapping("/{id}/followers")
     public ResponseEntity<List<User>> getFollowers(@PathVariable Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        return ResponseEntity.ok(new  ArrayList<>(user.getFollowers()));
+        return ResponseEntity.ok(userService.getFollowers(id));
     }
 
     @GetMapping("/{id}/following")
     public ResponseEntity<List<User>> getFollowing(@PathVariable Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        return ResponseEntity.ok(new ArrayList<>(user.getFollowing()));
+        return ResponseEntity.ok(userService.getFollowing(id));
     }
 
-
-
-    @Transactional
     @PostMapping("/{id}/follow")
     public ResponseEntity<String> followUser(@PathVariable Long id, @RequestParam Long followerId) {
-        User targetUser = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        User follower = userRepository.findById(followerId)
-                .orElseThrow(() -> new RuntimeException("Follower not found"));
-
-            targetUser.getFollowers().add(follower);
-        follower.getFollowing().add(targetUser);
-        userRepository.save(targetUser);
-        userRepository.save(follower);
-
-        return ResponseEntity.ok("Now following user with id: " + id);
+        return ResponseEntity.ok(userService.follow(id , followerId));
     }
-
-
-
-
-
-
 
 }
