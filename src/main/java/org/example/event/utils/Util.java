@@ -11,4 +11,6 @@ public interface Util {
     String CATEGORY_PATH = PATH + "/categories";
     String NOTIFICATION_PATH = PATH + "/notifs";
     String MASSAGE_PATH = PATH + "/massages";
+    String PROFILE_PATH = PATH + "/profile";
+    String EVENT_PATH = PATH + "/events";
 }
