@@ -2,7 +2,6 @@ package org.example.event.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.event.entity.User;
-import org.example.event.repo.UserRepository;
 import org.example.event.service.interfaces.UserService;
 import org.example.event.utils.Util;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserRepository userRepository;
     private final UserService userService;
 
     @GetMapping("/{id}")
