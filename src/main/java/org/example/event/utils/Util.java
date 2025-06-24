@@ -10,7 +10,7 @@ public interface Util {
     String REVIEW_PATH = PATH + "/reviews";
     String CATEGORY_PATH = PATH + "/categories";
     String NOTIFICATION_PATH = PATH + "/notifs";
-    String MASSAGE_PATH = PATH + "/massages";
+    String MESSAGE_PATH = PATH + "/messages";
     String PROFILE_PATH = PATH + "/profile";
     String EVENT_PATH = PATH + "/events";
 }
