@@ -37,30 +37,17 @@ public class EventController {
         Optional<Event> optionalEvent = eventRepository.findById(id);
         if (optionalEvent.isPresent()) {
             return ResponseEntity.ok(optionalEvent.get().getDescription());
-        }else {
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PatchMapping("/{userId}")
     public ResponseEntity<Event> createEvent(@RequestBody EvenDTO eventDto, @PathVariable Long userId) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            Event event=Event.builder()
-                    .title(eventDto.getTitle())
-                    .description(eventDto.getDescription())
-                    .location(eventDto.getLocation())
-                    .imageUrl(eventDto.getImageUrl())
-                    .organizer(user)
-                    .date(LocalDateTime.now())
-                    .build();
-            eventRepository.save(event);
-            return ResponseEntity.ok(event);
-        }else {
-            return ResponseEntity.notFound().build();
-        }
+        Optional<User> byId = userRepository.findById(userId);
+        return byId.map(user -> ResponseEntity.ok(eventService.getNewEvent(user, eventDto))).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
 
     @PatchMapping("/edit/{eventId}")
     public ResponseEntity<Event> updateEvent(@PathVariable Long eventId, @RequestBody Event updatedEvent) {
@@ -85,7 +72,7 @@ public class EventController {
             eventRepository.save(event);
             return ResponseEntity.ok(event);
 
-        }else {
+        } else {
             return ResponseEntity.notFound().build();
         }
 
@@ -117,5 +104,6 @@ public class EventController {
         List<Event> events = eventService.getEventsByCategory(categoryId);
         return ResponseEntity.ok(events);
     }
-
 }
+
+
