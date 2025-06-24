@@ -20,4 +20,16 @@ public class ProfileController {
         return ResponseEntity.ok(user);
     }
 
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        user.setName(updatedUser.getName());
+        user.setEmail(updatedUser.getEmail());
+        user.setProfileImage(updatedUser.getProfileImage());
+        user.setBio(updatedUser.getBio());
+
+        return ResponseEntity.ok(userRepository.save(user));
+    }
 }
