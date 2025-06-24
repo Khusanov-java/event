@@ -20,16 +20,29 @@ public class ProfileController {
         return ResponseEntity.ok(user);
     }
 
-    @PutMapping("/edit/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+    @PatchMapping("/edit/{id}")
+    public ResponseEntity<User> partialUpdateUser(@PathVariable Long id, @RequestBody User updatedUser) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        user.setName(updatedUser.getName());
-        user.setEmail(updatedUser.getEmail());
-        user.setProfileImage(updatedUser.getProfileImage());
-        user.setBio(updatedUser.getBio());
+        if (updatedUser.getName() != null) {
+            user.setName(updatedUser.getName());
+        }
+
+        if (updatedUser.getEmail() != null) {
+            user.setEmail(updatedUser.getEmail());
+        }
+
+        if (updatedUser.getProfileImage() != null) {
+            user.setProfileImage(updatedUser.getProfileImage());
+        }
+
+        if (updatedUser.getBio() != null) {
+            user.setBio(updatedUser.getBio());
+        }
 
         return ResponseEntity.ok(userRepository.save(user));
     }
+
+
 }
