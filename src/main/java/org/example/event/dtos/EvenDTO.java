@@ -11,7 +11,6 @@ public class EvenDTO {
      String title;
      String description;
      String location;
-     LocalDateTime date;
      String imageUrl;
-     User organizer;
+
 }

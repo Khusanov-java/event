@@ -7,11 +7,13 @@ import org.example.event.entity.User;
 import org.example.event.repo.EventRepository;
 import org.example.event.repo.UserRepository;
 import org.example.event.service.impl.EventServiceImpl;
+import org.example.event.service.interfaces.EventService;
 import org.example.event.utils.Util;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,12 +24,12 @@ public class EventController {
 
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
-    private final EventServiceImpl eventServiceImpl;
+    private final EventService eventService;
 
 
     @GetMapping
     public ResponseEntity<List<Event>> getEvents() {
-        List<Event> allEvents = eventRepository.getAllEvents();
+        List<Event> allEvents = eventRepository.findAll();
         return ResponseEntity.ok(allEvents);
     }
 
@@ -52,6 +54,7 @@ public class EventController {
                     .location(eventDto.getLocation())
                     .imageUrl(eventDto.getImageUrl())
                     .organizer(user)
+                    .date(LocalDateTime.now())
                     .build();
             eventRepository.save(event);
             return ResponseEntity.ok(event);
@@ -112,7 +115,7 @@ public class EventController {
 
     @GetMapping("/by-category/{categoryId}")
     public ResponseEntity<List<Event>> searchEventsByCategory(@PathVariable Long categoryId) {
-        List<Event> events = eventServiceImpl.getEventsByCategory(categoryId);
+        List<Event> events = eventService.getEventsByCategory(categoryId);
         return ResponseEntity.ok(events);
     }
 
