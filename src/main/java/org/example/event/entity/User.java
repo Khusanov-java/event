@@ -1,20 +1,21 @@
 package org.example.event.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
 @Table(name = "users")
+@EqualsAndHashCode(exclude = {"followers", "following"})
+@ToString(exclude = {"followers", "following"})
 public class User {
 
     @Id
@@ -24,8 +25,8 @@ public class User {
     private String name;
 
     @Column(unique = true)
-
     private String email;
+
     private String password;
     private String profileImage;
 
@@ -37,7 +38,9 @@ public class User {
     public enum Role {
         USER, ORGANIZER
     }
-    @ManyToMany
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_following",
             joinColumns = @JoinColumn(name = "follower_id"),
@@ -45,6 +48,7 @@ public class User {
     )
     private Set<User> following = new HashSet<>();
 
-    @ManyToMany(mappedBy = "following")
+    @JsonIgnore
+    @ManyToMany(mappedBy = "following", fetch = FetchType.EAGER)
     private Set<User> followers = new HashSet<>();
 }
