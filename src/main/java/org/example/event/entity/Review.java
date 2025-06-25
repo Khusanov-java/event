@@ -18,13 +18,14 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Event event;
+    private Double rating;
+    private String comment;
 
     @ManyToOne
     private User user;
 
-    private int rating;
-    private String comment;
+    @ManyToOne
+    private Event event;
+
     private LocalDateTime createdAt;
 }
