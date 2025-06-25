@@ -10,7 +10,6 @@ public interface EventService {
 
     List<Event> getEventsByCategory(Long categoryId);
 
-
     Event getNewEvent(User user, EvenDTO eventDto);
 
     List<Event> getLatestEvents();

@@ -46,7 +46,6 @@ public class EventController {
         return byId.map(user -> ResponseEntity.ok(eventService.getNewEvent(user, eventDto))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
     @PatchMapping("/edit/{eventId}")
     public ResponseEntity<Event> updateEvent(@PathVariable Long eventId, @RequestBody Event updatedEvent) {
         Optional<Event> optionalEvent = eventRepository.findById(eventId);
@@ -73,7 +72,6 @@ public class EventController {
         } else {
             return ResponseEntity.notFound().build();
         }
-
     }
 
     @DeleteMapping("/{eventId}")
@@ -95,7 +93,6 @@ public class EventController {
         }
         return ResponseEntity.notFound().build();
     }
-
 
     @GetMapping("/by-category/{categoryId}")
     public ResponseEntity<List<Event>> searchEventsByCategory(@PathVariable Long categoryId) {

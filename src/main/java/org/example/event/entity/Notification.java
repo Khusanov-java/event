@@ -18,10 +18,12 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String message;
+
+    private boolean seen = false;
+
+    private LocalDateTime createdAt;
+
     @ManyToOne
     private User user;
-
-    private String content;
-    private LocalDateTime createdAt;
-    private boolean isRead;
 }
