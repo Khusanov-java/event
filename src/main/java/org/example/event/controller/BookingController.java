@@ -22,7 +22,6 @@ import java.util.Optional;
 public class BookingController {
     private final BookingService bookingService;
 
-
     @PostMapping("/{eventId}/{userId}")
     public ResponseEntity<Booking> createBooking(@PathVariable Long eventId, @PathVariable Long userId) {
         Booking booking = bookingService.create(eventId, userId);
@@ -49,5 +48,4 @@ public class BookingController {
         }
         return ResponseEntity.ok(booking);
     }
-
 }

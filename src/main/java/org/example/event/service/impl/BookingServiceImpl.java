@@ -22,8 +22,6 @@ public class BookingServiceImpl implements BookingService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
-
-
     @Override
     public Booking create(Long userId, Long eventId) {
         Optional<User> byId = userRepository.findById(userId);
