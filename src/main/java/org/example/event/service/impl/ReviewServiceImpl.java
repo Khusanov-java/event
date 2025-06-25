@@ -74,4 +74,10 @@ public class ReviewServiceImpl implements ReviewService {
     public List<Review> getByUser(Long userId) {
         return reviewRepository.findByUserId(userId);
     }
+
+    @Override
+    public List<Review> getRecentReviews() {
+        return reviewRepository.findTop5ByOrderByCreatedAtDesc();
+    }
+
 }

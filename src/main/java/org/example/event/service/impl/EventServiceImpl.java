@@ -46,6 +46,13 @@ public class EventServiceImpl implements EventService {
             return eventRepository.save(event);
         }
 
+    @Override
+    public List<Event> getLatestEvents() {
+        return eventRepository.findTop5ByOrderByDateDesc();
     }
+
+}
+
+
 
 

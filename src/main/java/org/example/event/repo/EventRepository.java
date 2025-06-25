@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-
     List<Event> getEventsByTitleAndLocation(String title, String location);
+
+    List<Event> findTop5ByOrderByDateDesc();
+
 }

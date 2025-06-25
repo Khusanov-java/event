@@ -75,4 +75,10 @@ public class UserServiceImpl implements UserService {
         return "Now following user with id: " + id;
     }
 
+    @Override
+    public List<User> getTopOrganizers() {
+        return userRepository.findTop5ByRoleOrderByIdDesc(User.Role.ORGANIZER);
+    }
+
+
 }

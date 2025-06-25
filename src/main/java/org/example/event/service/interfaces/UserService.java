@@ -15,4 +15,7 @@ public interface UserService {
     List<User> getFollowing(Long id);
 
     String follow(Long id, Long followerId);
+
+    List<User> getTopOrganizers();
+
 }

@@ -12,4 +12,6 @@ public interface EventService {
 
 
     Event getNewEvent(User user, EvenDTO eventDto);
+
+    List<Event> getLatestEvents();
 }
