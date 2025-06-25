@@ -11,4 +11,7 @@ public interface BookingService {
     Booking create(Long userId, Long eventId);
 
     List<Event> getAllBookedEvents(Long userId);
+
+
+    Booking deleteBooking(Long bookingId);
 }

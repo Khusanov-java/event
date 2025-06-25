@@ -48,4 +48,16 @@ public class BookingServiceImpl implements BookingService {
                 .map(Booking::getEvent)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Booking deleteBooking(Long bookingId) {
+        Optional<Booking> byId = bookingRepository.findById(bookingId);
+        if (byId.isPresent()) {
+            Booking booking = byId.get();
+            bookingRepository.delete(booking);
+            return booking;
+        }else {
+            return null;
+        }
+    }
 }
