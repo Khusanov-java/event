@@ -1,4 +1,4 @@
-/*
+
 package org.example.event.service.impl;
 
 import lombok.RequiredArgsConstructor;
@@ -27,6 +27,7 @@ public class BookingServiceImpl implements BookingService {
     public Booking create(Long userId, Long eventId) {
         Optional<User> byId = userRepository.findById(userId);
         Optional<Event> byEvent = eventRepository.findById(eventId);
+
         if (byId.isPresent() && byEvent.isPresent()) {
             User user = byId.get();
             Event event = byEvent.get();
@@ -54,10 +55,11 @@ public class BookingServiceImpl implements BookingService {
         if (byId.isPresent()) {
             Booking booking = byId.get();
             booking.setStatus(Booking.Status.CANCELLED);
+            bookingRepository.save(booking);
             return booking;
         }else {
             return null;
         }
     }
 }
-*/
+

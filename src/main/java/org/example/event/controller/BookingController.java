@@ -1,4 +1,4 @@
-/*
+
 package org.example.event.controller;
 
 
@@ -25,12 +25,13 @@ public class BookingController {
 
     @PostMapping("/{eventId}/{userId}")
     public ResponseEntity<Booking> createBooking(@PathVariable Long eventId, @PathVariable Long userId) {
-        Booking booking = bookingService.create(eventId, userId);
+        Booking booking = bookingService.create(userId, eventId);
         if (booking == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(booking);
     }
+
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Event>> getBooking(@PathVariable Long userId) {
@@ -50,4 +51,4 @@ public class BookingController {
         return ResponseEntity.ok(booking);
     }
 }
-*/
+
