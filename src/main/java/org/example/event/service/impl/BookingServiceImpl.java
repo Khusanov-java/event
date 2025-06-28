@@ -27,6 +27,7 @@ public class BookingServiceImpl implements BookingService {
     public Booking create(Long userId, Long eventId) {
         Optional<User> byId = userRepository.findById(userId);
         Optional<Event> byEvent = eventRepository.findById(eventId);
+
         if (byId.isPresent() && byEvent.isPresent()) {
             User user = byId.get();
             Event event = byEvent.get();
@@ -53,7 +54,8 @@ public class BookingServiceImpl implements BookingService {
         Optional<Booking> byId = bookingRepository.findById(bookingId);
         if (byId.isPresent()) {
             Booking booking = byId.get();
-            bookingRepository.delete(booking);
+            booking.setStatus(Booking.Status.CANCELLED);
+            bookingRepository.save(booking);
             return booking;
         }else {
             return null;
