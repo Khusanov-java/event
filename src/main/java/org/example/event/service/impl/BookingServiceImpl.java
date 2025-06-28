@@ -54,7 +54,7 @@ public class BookingServiceImpl implements BookingService {
         Optional<Booking> byId = bookingRepository.findById(bookingId);
         if (byId.isPresent()) {
             Booking booking = byId.get();
-            bookingRepository.delete(booking);
+            booking.setStatus(Booking.Status.CANCELLED);
             return booking;
         }else {
             return null;
