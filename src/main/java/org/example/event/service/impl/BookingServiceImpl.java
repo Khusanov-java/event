@@ -1,3 +1,4 @@
+/*
 package org.example.event.service.impl;
 
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,6 @@ public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
-
-
 
     @Override
     public Booking create(Long userId, Long eventId) {
@@ -61,3 +60,4 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 }
+*/

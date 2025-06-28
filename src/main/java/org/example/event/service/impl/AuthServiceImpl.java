@@ -3,8 +3,8 @@ package org.example.event.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.apache.coyote.BadRequestException;
-import org.example.event.dtos.LoginDTO;
-import org.example.event.dtos.RegisterDTO;
+import org.example.event.dtos.req.LoginDTO;
+import org.example.event.dtos.req.RegisterDTO;
 import org.example.event.entity.User;
 import org.example.event.repo.UserRepository;
 import org.example.event.service.interfaces.AuthService;
@@ -41,6 +41,7 @@ public class AuthServiceImpl implements AuthService {
         User user = new User();
         user.setEmail(registerDTO.getEmail());
         user.setPassword(registerDTO.getPassword());
+        user.setBio(registerDTO.getBio());
         user.setName(registerDTO.getFullName());
         userRepository.save(user);
     }

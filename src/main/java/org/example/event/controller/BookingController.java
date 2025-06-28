@@ -1,3 +1,4 @@
+/*
 package org.example.event.controller;
 
 
@@ -21,7 +22,6 @@ import java.util.Optional;
 @RequestMapping(Util.BOOKING_PATH)
 public class BookingController {
     private final BookingService bookingService;
-
 
     @PostMapping("/{eventId}/{userId}")
     public ResponseEntity<Booking> createBooking(@PathVariable Long eventId, @PathVariable Long userId) {
@@ -49,5 +49,5 @@ public class BookingController {
         }
         return ResponseEntity.ok(booking);
     }
-
 }
+*/

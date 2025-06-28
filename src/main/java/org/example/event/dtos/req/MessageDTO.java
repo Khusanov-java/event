@@ -1,4 +1,4 @@
-package org.example.event.dtos;
+package org.example.event.dtos.req;
 
 import lombok.Data;
 

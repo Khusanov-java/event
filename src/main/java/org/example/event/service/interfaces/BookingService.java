@@ -1,3 +1,4 @@
+/*
 package org.example.event.service.interfaces;
 
 import org.example.event.entity.Booking;
@@ -13,5 +14,6 @@ public interface BookingService {
     List<Event> getAllBookedEvents(Long userId);
 
 
+
     Booking deleteBooking(Long bookingId);
-}
+}*/

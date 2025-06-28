@@ -1,7 +1,7 @@
 package org.example.event.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.event.dtos.HomeDTO;
+import org.example.event.dtos.res.HomeDTO;
 import org.example.event.service.interfaces.EventService;
 import org.example.event.service.interfaces.ReviewService;
 import org.example.event.service.interfaces.UserService;

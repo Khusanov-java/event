@@ -1,8 +1,8 @@
 package org.example.event.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.event.dtos.LoginDTO;
-import org.example.event.dtos.RegisterDTO;
+import org.example.event.dtos.req.LoginDTO;
+import org.example.event.dtos.req.RegisterDTO;
 import org.example.event.entity.User;
 import org.example.event.service.interfaces.AuthService;
 import org.example.event.utils.Util;

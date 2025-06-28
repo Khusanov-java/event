@@ -1,7 +1,7 @@
 package org.example.event.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.example.event.dtos.MessageDTO;
+import org.example.event.dtos.req.MessageDTO;
 import org.example.event.entity.Message;
 import org.example.event.entity.User;
 import org.example.event.repo.MessageRepository;
