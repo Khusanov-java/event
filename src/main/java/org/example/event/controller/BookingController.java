@@ -1,3 +1,4 @@
+/*
 package org.example.event.controller;
 
 
@@ -49,3 +50,4 @@ public class BookingController {
         return ResponseEntity.ok(booking);
     }
 }
+*/

@@ -1,7 +1,7 @@
 package org.example.event.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.event.dtos.NotificationDTO;
+import org.example.event.dtos.req.NotificationDTO;
 import org.example.event.entity.Notification;
 import org.example.event.service.interfaces.NotificationService;
 import org.springframework.http.ResponseEntity;

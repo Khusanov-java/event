@@ -1,6 +1,6 @@
 package org.example.event.service.interfaces;
 
-import org.example.event.dtos.MessageDTO;
+import org.example.event.dtos.req.MessageDTO;
 import org.example.event.entity.Message;
 
 import java.util.List;

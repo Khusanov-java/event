@@ -1,7 +1,7 @@
 package org.example.event.service.interfaces;
 
-import org.example.event.dtos.LoginDTO;
-import org.example.event.dtos.RegisterDTO;
+import org.example.event.dtos.req.LoginDTO;
+import org.example.event.dtos.req.RegisterDTO;
 import org.example.event.entity.User;
 
 public interface AuthService {

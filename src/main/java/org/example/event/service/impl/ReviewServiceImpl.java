@@ -1,7 +1,8 @@
 package org.example.event.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.example.event.dtos.ReviewDTO;
+import org.example.event.dtos.req.ReviewDTO;
+import org.example.event.dtos.res.ReviewResDTO;
 import org.example.event.entity.Event;
 import org.example.event.entity.Review;
 import org.example.event.entity.User;
@@ -55,9 +56,16 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review getById(Long id) {
-        return reviewRepository.findById(id)
+    public ReviewResDTO getById(Long id) {
+        Review review = reviewRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Review not found"));
+
+        Double totalRating = reviewRepository.calculateAverageRating(review.getEvent().getId());
+
+        return ReviewResDTO.builder()
+                .review(review)
+                .totalRating(totalRating)
+                .build();
     }
 
     @Override

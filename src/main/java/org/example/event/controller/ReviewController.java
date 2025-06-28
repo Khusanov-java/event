@@ -1,7 +1,8 @@
 package org.example.event.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.event.dtos.ReviewDTO;
+import org.example.event.dtos.req.ReviewDTO;
+import org.example.event.dtos.res.ReviewResDTO;
 import org.example.event.entity.Review;
 import org.example.event.service.interfaces.ReviewService;
 import org.example.event.utils.Util;
@@ -33,7 +34,7 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Review> getById(@PathVariable Long id) {
+    public ResponseEntity<ReviewResDTO> getById(@PathVariable Long id) {
         return ResponseEntity.ok(reviewService.getById(id));
     }
 
