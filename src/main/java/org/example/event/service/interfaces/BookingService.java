@@ -1,4 +1,4 @@
-/*
+
 package org.example.event.service.interfaces;
 
 import org.example.event.entity.Booking;
@@ -16,4 +16,4 @@ public interface BookingService {
 
 
     Booking deleteBooking(Long bookingId);
-}*/
+}

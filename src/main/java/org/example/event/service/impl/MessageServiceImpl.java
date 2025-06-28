@@ -7,6 +7,7 @@ import org.example.event.entity.User;
 import org.example.event.repo.MessageRepository;
 import org.example.event.repo.UserRepository;
 import org.example.event.service.interfaces.MessageService;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,8 @@ public class MessageServiceImpl implements MessageService {
 
     private final MessageRepository messageRepository;
     private final UserRepository userRepository;
+    private final SimpMessagingTemplate messagingTemplate;
+
 
     @Override
     public String send(MessageDTO request) {
@@ -31,10 +34,13 @@ public class MessageServiceImpl implements MessageService {
                 .sender(sender)
                 .receiver(receiver)
                 .content(request.getContent())
-                .timestamp(
-                        LocalDateTime.now())
+                .timestamp(LocalDateTime.now())
                 .build();
 
+        messagingTemplate.convertAndSend(
+                "/topic/messages",
+                request
+        );
         messageRepository.save(message);
         return "Message sent successfully";
     }
@@ -46,6 +52,4 @@ public class MessageServiceImpl implements MessageService {
                          user1, user2, user1, user2
                 );
     }
-
-
 }

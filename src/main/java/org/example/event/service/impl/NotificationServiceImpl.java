@@ -7,6 +7,7 @@ import org.example.event.entity.User;
 import org.example.event.repo.NotificationRepository;
 import org.example.event.repo.UserRepository;
 import org.example.event.service.interfaces.NotificationService;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     private final NotificationRepository notificationRepository;
     private final UserRepository userRepository;
+    private final SimpMessagingTemplate messagingTemplate;
 
     @Override
     public String sendNotification(NotificationDTO dto) {
@@ -31,6 +33,9 @@ public class NotificationServiceImpl implements NotificationService {
                 .build();
 
         notificationRepository.save(notification);
+
+        messagingTemplate.convertAndSend("/topic/notifications/" + dto.getUserId(), dto.getMessage());
+
         return "Notification sent";
     }
 

@@ -1,21 +1,16 @@
-/*
+
 package org.example.event.controller;
 
 
 import lombok.RequiredArgsConstructor;
 import org.example.event.entity.Booking;
 import org.example.event.entity.Event;
-import org.example.event.entity.User;
-import org.example.event.repo.BookingRepository;
-import org.example.event.repo.EventRepository;
-import org.example.event.repo.UserRepository;
 import org.example.event.service.interfaces.BookingService;
 import org.example.event.utils.Util;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -50,4 +45,4 @@ public class BookingController {
         return ResponseEntity.ok(booking);
     }
 }
-*/
+

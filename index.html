@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 id="number"></h1>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<script>
+
+    let h1 = document.getElementById("number");
+    const socket = new SockJS('http://localhost:8080/ws');
+
+    const stompClient = Stomp.over(socket);
+
+    stompClient.connect({} , function (frame){
+        stompClient.subscribe('/topic/messages' , function (message){
+            h1.innerText += message.body;
+        });
+    });
+    axios({
+        url:"http://localhost:8080/api/v1/messages/chat",
+        method: "GET",
+        params: {
+            user1: 1,
+            user2: 2
+        }
+    }).then(res=>{
+        h1.innerText =  res.data;
+    })
+
+</script>
+
+</html>

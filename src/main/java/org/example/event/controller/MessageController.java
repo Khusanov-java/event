@@ -23,9 +23,9 @@ public class MessageController {
     }
 
     @GetMapping("/chat")
-    public ResponseEntity<List<Message>> getChat(@RequestParam Long user1 ,  @RequestParam Long user2) {
-        return ResponseEntity.ok(messageService.getChat(user1 , user2));
+    public ResponseEntity<List<Message>> getChat(@RequestParam Long user1, @RequestParam Long user2) {
+
+        return ResponseEntity.ok(messageService.getChat(user1, user2));
+
     }
-
-
 }
