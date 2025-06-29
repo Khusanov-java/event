@@ -57,7 +57,7 @@ public class BookingServiceImpl implements BookingService {
             booking.setStatus(Booking.Status.CANCELLED);
             bookingRepository.save(booking);
             return booking;
-        }else {
+        } else {
             return null;
         }
     }

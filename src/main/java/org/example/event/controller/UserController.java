@@ -23,7 +23,7 @@ public class UserController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
-        return ResponseEntity.ok(userService.updateUser(id , updatedUser));
+        return ResponseEntity.ok(userService.updateUser(id, updatedUser));
     }
 
     @GetMapping("/{id}/followers")
@@ -38,7 +38,7 @@ public class UserController {
 
     @PostMapping("/{id}/follow")
     public ResponseEntity<String> followUser(@PathVariable Long id, @RequestParam Long followerId) {
-        return ResponseEntity.ok(userService.follow(id , followerId));
+        return ResponseEntity.ok(userService.follow(id, followerId));
     }
 
 }

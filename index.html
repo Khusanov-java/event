@@ -20,20 +20,20 @@
 
     const stompClient = Stomp.over(socket);
 
-    stompClient.connect({} , function (frame){
-        stompClient.subscribe('/topic/messages' , function (message){
+    stompClient.connect({}, function (frame) {
+        stompClient.subscribe('/topic/messages', function (message) {
             h1.innerText += message.body;
         });
     });
     axios({
-        url:"http://localhost:8080/api/v1/messages/chat",
+        url: "http://localhost:8080/api/v1/messages/chat",
         method: "GET",
         params: {
             user1: 1,
             user2: 2
         }
-    }).then(res=>{
-        h1.innerText =  res.data;
+    }).then(res => {
+        h1.innerText = res.data;
     })
 
 </script>

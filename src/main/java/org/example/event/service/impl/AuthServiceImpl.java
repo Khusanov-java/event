@@ -23,10 +23,10 @@ public class AuthServiceImpl implements AuthService {
         Optional<User> byEmail = userRepository.findByEmail(loginDTO.getEmail());
         if (byEmail.isPresent()) {
             User user = byEmail.get();
-            if(user.getPassword().equals(loginDTO.getPassword())) {
+            if (user.getPassword().equals(loginDTO.getPassword())) {
                 return user;
             }
-        }else{
+        } else {
             throw new BadRequestException("user not found");
         }
         return null;
@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
     @SneakyThrows
     @Override
     public void register(RegisterDTO registerDTO) {
-        if(!registerDTO.getPassword().equals(registerDTO.getConfirmPassword())) {
+        if (!registerDTO.getPassword().equals(registerDTO.getConfirmPassword())) {
             throw new BadRequestException("Passwords do not match");
         }
         User user = new User();

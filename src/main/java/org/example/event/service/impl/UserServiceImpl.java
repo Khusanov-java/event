@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     public List<User> getFollowing(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        return  new ArrayList<>(user.getFollowing());
+        return new ArrayList<>(user.getFollowing());
     }
 
     @Transactional

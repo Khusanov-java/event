@@ -1,7 +1,6 @@
 
 package org.example.event.controller;
 
-
 import lombok.RequiredArgsConstructor;
 import org.example.event.entity.Booking;
 import org.example.event.entity.Event;

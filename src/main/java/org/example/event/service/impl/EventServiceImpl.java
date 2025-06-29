@@ -12,6 +12,7 @@ import org.example.event.service.interfaces.EventService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EventServiceImpl implements EventService {

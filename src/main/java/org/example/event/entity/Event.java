@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -26,7 +27,7 @@ public class Event {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String location;
-    private LocalDateTime date =  LocalDateTime.now();
+    private LocalDateTime date = LocalDateTime.now();
 
     private Double averageRating;
 

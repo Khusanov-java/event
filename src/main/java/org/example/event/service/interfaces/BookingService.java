@@ -14,6 +14,5 @@ public interface BookingService {
     List<Event> getAllBookedEvents(Long userId);
 
 
-
     Booking deleteBooking(Long bookingId);
 }
