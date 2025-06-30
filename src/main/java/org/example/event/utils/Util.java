@@ -12,4 +12,5 @@ public interface Util {
     String MESSAGE_PATH = PATH + "/messages";
     String EVENT_PATH = PATH + "/events";
     String SEARCH_PATH = PATH + "/search";
+    String FILTER_PATH = PATH + "/filter";
 }

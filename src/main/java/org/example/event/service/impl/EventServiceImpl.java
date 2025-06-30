@@ -11,6 +11,8 @@ import org.example.event.repo.UserRepository;
 import org.example.event.service.interfaces.EventService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -83,9 +85,12 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> searchedEvent(String search) {
-        List<Event> events = eventRepository.findByTitleContainingIgnoreCase(search);
-        System.out.println(events);
-        return events;
+        return eventRepository.findByTitleContainingIgnoreCase(search);
+    }
+
+    @Override
+    public List<Event> filterEvents(Long categoryId, LocalDate date, Double minPrice, Double maxPrice) {
+        return eventRepository.filterEvents(categoryId, date, minPrice, maxPrice);
     }
 
     @Override

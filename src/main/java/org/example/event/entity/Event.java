@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,14 @@ public class Event {
 
     private String title;
     private String description;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private LocalDate startTime;
+    private LocalDate endTime;
     private String location;
     private LocalDateTime date = LocalDateTime.now();
+    private Double price;
+
+    @ManyToOne
+    private Category category;
 
     private Double averageRating;
 
