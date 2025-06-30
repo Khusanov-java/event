@@ -11,4 +11,5 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findTop5ByOrderByDateDesc();
 
+    List<Event> findByTitleContainingIgnoreCase(String keyword);
 }

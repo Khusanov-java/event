@@ -19,4 +19,6 @@ public interface EventService {
     void delete(Long id);
 
     void updateAverageRating(Long eventId);
+
+    List<Event> searchedEvent(String search);
 }

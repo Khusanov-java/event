@@ -11,4 +11,5 @@ public interface Util {
     String NOTIFICATION_PATH = PATH + "/notifs";
     String MESSAGE_PATH = PATH + "/messages";
     String EVENT_PATH = PATH + "/events";
+    String SEARCH_PATH = PATH + "/search";
 }

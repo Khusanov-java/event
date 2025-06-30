@@ -82,6 +82,13 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public List<Event> searchedEvent(String search) {
+        List<Event> events = eventRepository.findByTitleContainingIgnoreCase(search);
+        System.out.println(events);
+        return events;
+    }
+
+    @Override
     public List<Event> getLatestEvents() {
         return eventRepository.findTop5ByOrderByDateDesc();
     }
