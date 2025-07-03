@@ -11,6 +11,8 @@ import org.example.event.repo.UserRepository;
 import org.example.event.service.interfaces.EventService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -79,6 +81,16 @@ public class EventServiceImpl implements EventService {
 
         event.setAverageRating(avg);
         eventRepository.save(event);
+    }
+
+    @Override
+    public List<Event> searchedEvent(String search) {
+        return eventRepository.findByTitleContainingIgnoreCase(search);
+    }
+
+    @Override
+    public List<Event> filterEvents(Long categoryId, LocalDate date, Double minPrice, Double maxPrice) {
+        return eventRepository.filterEvents(categoryId, date, minPrice, maxPrice);
     }
 
     @Override
