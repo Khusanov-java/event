@@ -28,6 +28,7 @@
         @Value("${keycloak.password}")
         private String password;
 
+
         @Bean
         public Keycloak keycloak() {
             return KeycloakBuilder.builder()
