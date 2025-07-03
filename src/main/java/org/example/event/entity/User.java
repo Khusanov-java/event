@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,8 +20,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id = UUID.randomUUID().toString();
 
     private String name;
 
@@ -36,8 +36,11 @@ public class User {
     private String bio;
 
     public enum Role {
-        USER, ORGANIZER
+        USER, ORGANIZER, ADMIN
     }
+
+    @Column(nullable = false)
+    private boolean verified = false;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)

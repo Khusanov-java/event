@@ -1,9 +1,13 @@
 package org.example.event.dtos.req;
 
-import lombok.Value;
+import lombok.Data;
 
-@Value
+
+@Data
 public class LoginDTO {
-    String email;
-    String password;
+    private String email;
+    private String password;
+    private boolean rememberMe;
 }
+
+

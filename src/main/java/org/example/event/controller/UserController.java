@@ -17,27 +17,27 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserProfile(@PathVariable Long id) {
+    public ResponseEntity<User> getUserProfile(@PathVariable String id) {
         return ResponseEntity.ok(userService.getUser(id));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
         return ResponseEntity.ok(userService.updateUser(id, updatedUser));
     }
 
     @GetMapping("/{id}/followers")
-    public ResponseEntity<List<User>> getFollowers(@PathVariable Long id) {
+    public ResponseEntity<List<User>> getFollowers(@PathVariable String id) {
         return ResponseEntity.ok(userService.getFollowers(id));
     }
 
     @GetMapping("/{id}/following")
-    public ResponseEntity<List<User>> getFollowing(@PathVariable Long id) {
+    public ResponseEntity<List<User>> getFollowing(@PathVariable String id) {
         return ResponseEntity.ok(userService.getFollowing(id));
     }
 
     @PostMapping("/{id}/follow")
-    public ResponseEntity<String> followUser(@PathVariable Long id, @RequestParam Long followerId) {
+    public ResponseEntity<String> followUser(@PathVariable String id, @RequestParam String followerId) {
         return ResponseEntity.ok(userService.follow(id, followerId));
     }
 

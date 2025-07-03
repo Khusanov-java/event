@@ -11,5 +11,5 @@ public class EventDTO {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String location;
-    private Long organizerId;
+    private String organizerId;
 }

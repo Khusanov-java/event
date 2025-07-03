@@ -18,7 +18,7 @@ public class BookingController {
     private final BookingService bookingService;
 
     @PostMapping("/{eventId}/{userId}")
-    public ResponseEntity<Booking> createBooking(@PathVariable Long eventId, @PathVariable Long userId) {
+    public ResponseEntity<Booking> createBooking(@PathVariable Long eventId, @PathVariable String userId) {
         Booking booking = bookingService.create(userId, eventId);
         if (booking == null) {
             return ResponseEntity.notFound().build();
@@ -28,7 +28,7 @@ public class BookingController {
 
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Event>> getBooking(@PathVariable Long userId) {
+    public ResponseEntity<List<Event>> getBooking(@PathVariable String userId) {
         List<Event> allBookedEvents = bookingService.getAllBookedEvents(userId);
         if (allBookedEvents.isEmpty()) {
             return ResponseEntity.notFound().build();

@@ -8,7 +8,7 @@ import java.util.List;
 public interface MessageService {
     String send(MessageDTO message);
 
-    List<Message> getChat(Long user1, Long user2);
+    List<Message> getChat(String user1, String user2);
 
 
 }

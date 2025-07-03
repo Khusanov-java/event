@@ -9,6 +9,7 @@ import org.example.event.utils.Util;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.sax.SAXResult;
 import java.util.List;
 
 @RestController
@@ -49,7 +50,7 @@ public class ReviewController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Review>> getByUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Review>> getByUser(@PathVariable String userId) {
         return ResponseEntity.ok(reviewService.getByUser(userId));
     }
 }

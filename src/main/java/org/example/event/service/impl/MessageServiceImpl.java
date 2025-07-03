@@ -10,6 +10,7 @@ import org.example.event.service.interfaces.MessageService;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.xml.transform.sax.SAXResult;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<Message> getChat(Long user1, Long user2) {
+    public List<Message> getChat(String user1, String user2) {
         return messageRepository
                 .findBySenderIdAndReceiverIdOrReceiverIdAndSenderIdOrderByTimestampAsc(
                          user1, user2, user1, user2

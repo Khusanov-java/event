@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.xml.transform.sax.SAXResult;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +19,13 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User getUser(Long id) {
+    public User getUser(String id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
         return ResponseEntity.ok(user).getBody();
     }
 
     @Override
-    public User updateUser(Long id, User updatedUser) {
+    public User updateUser(String id, User updatedUser) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -47,14 +48,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getFollowers(Long id) {
+    public List<User> getFollowers(String id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         return new ArrayList<>(user.getFollowers());
     }
 
     @Override
-    public List<User> getFollowing(Long id) {
+    public List<User> getFollowing(String id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         return new ArrayList<>(user.getFollowing());
@@ -62,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public String follow(Long id, Long followerId) {
+    public String follow(String id, String followerId) {
         User targetUser = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         User follower = userRepository.findById(followerId)

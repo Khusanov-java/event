@@ -20,7 +20,7 @@ ReviewService {
 
     List<Review> getByEvent(Long eventId);
 
-    List<Review> getByUser(Long userId);
+    List<Review> getByUser(String userId);
 
     List<Review> getRecentReviews();
 

@@ -3,7 +3,7 @@ package org.example.event.dtos.req;
 import lombok.Data;
 
 @Data
-public class NotificationDTO {
+public class VerificationDTO {
     private String userId;
-    private String message;
+    private String code;
 }

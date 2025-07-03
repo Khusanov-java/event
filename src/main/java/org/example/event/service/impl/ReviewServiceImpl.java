@@ -79,7 +79,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<Review> getByUser(Long userId) {
+    public List<Review> getByUser(String userId) {
         return reviewRepository.findByUserId(userId);
     }
 

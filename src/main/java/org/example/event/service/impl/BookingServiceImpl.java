@@ -24,7 +24,7 @@ public class BookingServiceImpl implements BookingService {
     private final UserRepository userRepository;
 
     @Override
-    public Booking create(Long userId, Long eventId) {
+    public Booking create(String userId, Long eventId) {
         Optional<User> byId = userRepository.findById(userId);
         Optional<Event> byEvent = eventRepository.findById(eventId);
 
@@ -42,7 +42,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Event> getAllBookedEvents(Long userId) {
+    public List<Event> getAllBookedEvents(String userId) {
         List<Booking> bookings = bookingRepository.findAllByUserIdAndStatus(userId, Booking.Status.BOOKED);
         return bookings.stream()
                 .map(Booking::getEvent)

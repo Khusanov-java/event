@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface BookingService {
 
-    Booking create(Long userId, Long eventId);
+    Booking create(String userId, Long eventId);
 
-    List<Event> getAllBookedEvents(Long userId);
+    List<Event> getAllBookedEvents(String userId);
 
 
     Booking deleteBooking(Long bookingId);

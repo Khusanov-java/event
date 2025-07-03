@@ -6,15 +6,15 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface UserService {
-    User getUser(Long id);
+    User getUser(String id);
 
-    User updateUser(Long id, User updatedUser);
+    User updateUser(String id, User updatedUser);
 
-    List<User> getFollowers(Long id);
+    List<User> getFollowers(String id);
 
-    List<User> getFollowing(Long id);
+    List<User> getFollowing(String id);
 
-    String follow(Long id, Long followerId);
+    String follow(String id, String followerId);
 
     List<User> getTopOrganizers();
 
