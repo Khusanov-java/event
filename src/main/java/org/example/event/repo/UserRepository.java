@@ -12,4 +12,5 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     List<User> findTop5ByRoleOrderByIdDesc(User.Role role);
 
+    User findByPhone(String phone);
 }

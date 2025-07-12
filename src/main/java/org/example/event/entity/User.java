@@ -50,4 +50,10 @@ public class User {
     @JsonIgnore
     @ManyToMany(mappedBy = "following", fetch = FetchType.EAGER)
     private Set<User> followers = new HashSet<>();
+
+
+    private String phone;
+
+    private Double longitude;
+    private Double latitude;
 }
